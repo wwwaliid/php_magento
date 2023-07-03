@@ -33,6 +33,18 @@
      <filterSearch name="fulltext"/>
     <filters name="listing_filters"/>
     <paging name="listing_paging"/>
+    <massaction name="listing_massaction">
+        <action name="delete">
+            <settings>
+                <type>delete</type>
+                <label translate="true">Delete</label>
+                <url path="showwalidlogs/index/massdelete"/>
+                <confirm>
+                    <message translate="true">Are you sure you want to delete selected items?</message>
+                </confirm>
+            </settings>
+        </action>
+    </massaction>
 </listingToolbar>
 
 <columns name="user_action_logs_grid_columns">
@@ -149,6 +161,7 @@
             </item>
         </argument>
     </column>
+
 
 </columns>
 </listing>
