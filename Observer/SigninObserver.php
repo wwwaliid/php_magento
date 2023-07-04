@@ -1,6 +1,7 @@
 <?php
 namespace Training\AdminGridLogs\Observer;
 
+use Magento\Framework\Event\Observer;
 use Magento\Framework\Event\ObserverInterface;
 use Training\AdminGridLogs\Model\UserActionFactory;
 use Training\AdminGridLogs\Model\ResourceModel\UserAction as UserActionResource;
@@ -20,7 +21,7 @@ class SigninObserver implements ObserverInterface
      * Save sign-in information to custom table.
      * @param \Magento\Framework\Event\Observer $observer
      */
-    public function execute(\Magento\Framework\Event\Observer $observer)
+    public function execute(Observer $observer)
     {
         $user = $observer->getUser();
         if ($user && $user->getId()) {
