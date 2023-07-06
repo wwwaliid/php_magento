@@ -6,7 +6,7 @@
     <event name="backend_auth_user_login_failed">
         <observer name="SigninAttempt" instance="Training\AdminGridLogs\Observer\SigninAttemptObserver" />
     </event>
-    <event name="controller_action_predispatch_adminhtml_system_store_index">
+    <event name="controller_action_predispatch">
         <observer name="ActionObserver" instance="Training\AdminGridLogs\Observer\AdminActionObserver" />
     </event>
 </config>
