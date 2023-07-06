@@ -6,17 +6,19 @@ use Magento\Framework\Event\ObserverInterface;
 use Training\AdminGridLogs\Model\UserActionFactory;
 use Training\AdminGridLogs\Model\ResourceModel\UserAction as UserActionResource;
 use Magento\Backend\Model\Auth\Session as AuthSession;
+use Training\AdminGridLogs\Model\Config;
 
 class AdminActionObserver implements ObserverInterface
 {
     protected $UserActionFactory;
     protected $UserActionResource;
 
-    public function __construct(UserActionFactory $UserActionFactory, UserActionResource $UserActionResource, AuthSession $authSession)
+    public function __construct(UserActionFactory $UserActionFactory, UserActionResource $UserActionResource, AuthSession $authSession, Config $config)
     {
         $this->UserActionFactory = $UserActionFactory;
         $this->UserActionResource = $UserActionResource;
         $this->authSession = $authSession;
+        $this->config = $config;
     }
 
     /**
@@ -30,7 +32,7 @@ class AdminActionObserver implements ObserverInterface
 
         //dd($controllerAction->getRequest()->getFullActionName());
 
-        if ($controllerAction->getRequest()->getFullActionName() === 'adminhtml_system_store_index') {
+        if ($controllerAction->getRequest()->getFullActionName() === 'adminhtml_system_store_index' && $this->config->isTrackingStoresEnabled()) {
             $data = [
                 'login_date' => date('Y-m-d H:i:s'),
                 'username' => $adminUser->getUsername(),
@@ -48,7 +50,7 @@ class AdminActionObserver implements ObserverInterface
             $this->UserActionResource->save($model);
         }
 
-        if ($controllerAction->getRequest()->getFullActionName() === 'customer_index_index') {
+        if ($controllerAction->getRequest()->getFullActionName() === 'customer_index_index' && $this->config->isTrackingCustomersEnabled()) {
             $data = [
                 'login_date' => date('Y-m-d H:i:s'),
                 'username' => $adminUser->getUsername(),
@@ -65,7 +67,7 @@ class AdminActionObserver implements ObserverInterface
 
             $this->UserActionResource->save($model);
         }
-        if ($controllerAction->getRequest()->getFullActionName() === 'catalog_product_index') {
+        if ($controllerAction->getRequest()->getFullActionName() === 'catalog_product_index' && $this->config->isTrackingProductsEnabled()) {
             $data = [
                 'login_date' => date('Y-m-d H:i:s'),
                 'username' => $adminUser->getUsername(),
@@ -82,7 +84,7 @@ class AdminActionObserver implements ObserverInterface
 
             $this->UserActionResource->save($model);
         }
-        if ($controllerAction->getRequest()->getFullActionName() === 'catalog_category_index') {
+        if ($controllerAction->getRequest()->getFullActionName() === 'catalog_category_index' && $this->config->isTrackingCategoriesEnabled()) {
             $data = [
                 'login_date' => date('Y-m-d H:i:s'),
                 'username' => $adminUser->getUsername(),
@@ -99,7 +101,7 @@ class AdminActionObserver implements ObserverInterface
 
             $this->UserActionResource->save($model);
         }
-        if ($controllerAction->getRequest()->getFullActionName() === 'adminhtml_system_config_index') {
+        if ($controllerAction->getRequest()->getFullActionName() === 'adminhtml_system_config_index' && $this->config->isTrackingConfigEnabled()) {
             $data = [
                 'login_date' => date('Y-m-d H:i:s'),
                 'username' => $adminUser->getUsername(),
@@ -116,7 +118,7 @@ class AdminActionObserver implements ObserverInterface
 
             $this->UserActionResource->save($model);
         }
-        if ($controllerAction->getRequest()->getFullActionName() === 'sales_order_index') {
+        if ($controllerAction->getRequest()->getFullActionName() === 'sales_order_index' && $this->config->isTrackingOrdersEnabled()) {
             $data = [
                 'login_date' => date('Y-m-d H:i:s'),
                 'username' => $adminUser->getUsername(),
@@ -133,7 +135,7 @@ class AdminActionObserver implements ObserverInterface
 
             $this->UserActionResource->save($model);
         }
-        if ($controllerAction->getRequest()->getFullActionName() === 'adminhtml_user_index') {
+        if ($controllerAction->getRequest()->getFullActionName() === 'adminhtml_user_index' && $this->config->isTrackingUsersEnabled()) {
             $data = [
                 'login_date' => date('Y-m-d H:i:s'),
                 'username' => $adminUser->getUsername(),
@@ -150,7 +152,7 @@ class AdminActionObserver implements ObserverInterface
 
             $this->UserActionResource->save($model);
         }
-        if ($controllerAction->getRequest()->getFullActionName() === 'inventory_stock_index') {
+        if ($controllerAction->getRequest()->getFullActionName() === 'inventory_stock_index' && $this->config->isTrackingStockEnabled()) {
             $data = [
                 'login_date' => date('Y-m-d H:i:s'),
                 'username' => $adminUser->getUsername(),
