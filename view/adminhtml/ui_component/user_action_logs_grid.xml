@@ -75,6 +75,7 @@
    <column name="id">
         <argument name="data" xsi:type="array">
             <item name="config" xsi:type="array">
+                <item name="filter" xsi:type="string">text</item>
                 <item name="sortOrder" xsi:type="number">10</item>
                 <item name="label" xsi:type="string" translate="true">Id</item>
             </item>
@@ -84,6 +85,7 @@
     <column name="user_id" >
         <argument name="data" xsi:type="array">
             <item name="config" xsi:type="array">
+                <item name="filter" xsi:type="string">text</item>
                 <item name="sortOrder" xsi:type="number">50</item>
                 <item name="label" xsi:type="string" translate="true">User ID</item>
             </item>
@@ -93,6 +95,7 @@
     <column name="username">
         <argument name="data" xsi:type="array">
             <item name="config" xsi:type="array">
+                <item name="filter" xsi:type="string">text</item>
                 <item name="sortOrder" xsi:type="number">30</item>
                 <item name="label" xsi:type="string" translate="true">User Name</item>
             </item>
@@ -102,6 +105,7 @@
     <column name="login_date">
         <argument name="data" xsi:type="array">
             <item name="config" xsi:type="array">
+                <item name="filter" xsi:type="string">dateRange</item>
                 <item name="sortOrder" xsi:type="number">20</item>
                 <item name="label" xsi:type="string" translate="true">Login Date</item>
             </item>
@@ -111,6 +115,7 @@
     <column name="session_id" >
         <argument name="data" xsi:type="array">
             <item name="config" xsi:type="array">
+                <item name="filter" xsi:type="string">text</item>
                 <item name="sortOrder" xsi:type="number">40</item>
                 <item name="label" xsi:type="string" translate="true">Session Id</item>
             </item>
@@ -120,6 +125,7 @@
     <column name="email" >
         <argument name="data" xsi:type="array">
             <item name="config" xsi:type="array">
+                <item name="filter" xsi:type="string">text</item>
                 <item name="sortOrder" xsi:type="number">60</item>
                 <item name="label" xsi:type="string" translate="true">Email</item>
             </item>
@@ -129,6 +135,7 @@
     <column name="ip_address">
         <argument name="data" xsi:type="array">
             <item name="config" xsi:type="array">
+                <item name="filter" xsi:type="string">text</item>
                 <item name="sortOrder" xsi:type="number">70</item>
                 <item name="label" xsi:type="string" translate="true">IP Address</item>
             </item>
@@ -138,6 +145,7 @@
     <column name="action_type">
         <argument name="data" xsi:type="array">
             <item name="config" xsi:type="array">
+                <item name="filter" xsi:type="string">text</item>
                 <item name="sortOrder" xsi:type="number">90</item>
                 <item name="label" xsi:type="string" translate="true">Action Type</item>
             </item>
@@ -147,6 +155,7 @@
     <column name="logout_date">
         <argument name="data" xsi:type="array">
             <item name="config" xsi:type="array">
+                <item name="filter" xsi:type="string">text</item>
                 <item name="sortOrder" xsi:type="number">80</item>
                 <item name="label" xsi:type="string" translate="true">Logout Date</item>
             </item>
@@ -156,8 +165,52 @@
     <column name="affected_module">
         <argument name="data" xsi:type="array">
             <item name="config" xsi:type="array">
+                <item name="filter" xsi:type="string">select</item>
                 <item name="sortOrder" xsi:type="number">100</item>
                 <item name="label" xsi:type="string" translate="true">Affected Module</item>
+                <item name="options" xsi:type="array">
+                    <item name="1" xsi:type="array">
+                        <item name="label" xsi:type="string" translate="true">Sign in</item>
+                        <item name="value" xsi:type="string">Sign in</item>
+                    </item>
+                    <item name="2" xsi:type="array">
+                        <item name="label" xsi:type="string" translate="true">Sign in attempt</item>
+                        <item name="value" xsi:type="string">Sign in attempt</item>
+                    </item>
+                    <item name="3" xsi:type="array">
+                        <item name="label" xsi:type="string" translate="true">Stores</item>
+                        <item name="value" xsi:type="string">Stores</item>
+                    </item>
+                    <item name="4" xsi:type="array">
+                        <item name="label" xsi:type="string" translate="true">Customers</item>
+                        <item name="value" xsi:type="string">Customers</item>
+                    </item>
+                    <item name="5" xsi:type="array">
+                        <item name="label" xsi:type="string" translate="true">Products</item>
+                        <item name="value" xsi:type="string">Products</item>
+                    </item>
+                    <item name="6" xsi:type="array">
+                        <item name="label" xsi:type="string" translate="true">Categories</item>
+                        <item name="value" xsi:type="string">Categories</item>
+                    </item>
+                    <item name="7" xsi:type="array">
+                        <item name="label" xsi:type="string" translate="true">Stock</item>
+                        <item name="value" xsi:type="string">Stock</item>
+                    </item>
+                    <item name="8" xsi:type="array">
+                        <item name="label" xsi:type="string" translate="true">Configuration</item>
+                        <item name="value" xsi:type="string">Configuration</item>
+                    </item>
+                    <item name="9" xsi:type="array">
+                        <item name="label" xsi:type="string" translate="true">Orders</item>
+                        <item name="value" xsi:type="string">Orders</item>
+                    </item>
+                    <item name="10" xsi:type="array">
+                        <item name="label" xsi:type="string" translate="true">Users</item>
+                        <item name="value" xsi:type="string">Users</item>
+                    </item>
+                    <!-- Add more options as needed -->
+                </item>
             </item>
         </argument>
     </column>

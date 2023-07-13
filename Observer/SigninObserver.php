@@ -34,7 +34,7 @@ class SigninObserver implements ObserverInterface
                 'ip_address' => '', // Set IP address if available
                 'logout_date' => '', // Set logout date if available
                 'action_type' => 'signin', // Set the appropriate action type
-                'affected_module' => '', // Set the affected module if applicable
+                'affected_module' => 'Sign in', // Set the affected module if applicable
             ];
 
             $model = $this->UserActionFactory->create();

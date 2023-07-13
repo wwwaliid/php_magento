@@ -31,7 +31,7 @@ class SigninAttemptObserver implements ObserverInterface
             'ip_address' => '', // Set IP address if available
             'logout_date' => '',
             'action_type' => 'attempt signin', // Set the appropriate action type
-            'affected_module' => '', // Set the affected module if applicable
+            'affected_module' => 'Sign in attempt', // Set the affected module if applicable
         ];
 
         $model = $this->UserActionFactory->create();
