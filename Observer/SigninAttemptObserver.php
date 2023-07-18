@@ -4,6 +4,7 @@ namespace Training\AdminGridLogs\Observer;
 use Magento\Framework\Event\ObserverInterface;
 use Training\AdminGridLogs\Model\UserActionFactory;
 use Training\AdminGridLogs\Model\ResourceModel\UserAction as UserActionResource;
+use UAParser\Parser;
 
 class SigninAttemptObserver implements ObserverInterface
 {
@@ -22,14 +23,24 @@ class SigninAttemptObserver implements ObserverInterface
      */
     public function execute(\Magento\Framework\Event\Observer $observer)
     {
+        $ipAddress = $_SERVER['REMOTE_ADDR'];
+        $userAgent = $_SERVER['HTTP_USER_AGENT'];
+
+        // Parse the User-Agent string
+        $parser = Parser::create();
+        $result = $parser->parse($userAgent);
+
+        // Extract browser and os info
+        $browser = $result->ua->toString();
+        $os = $result->os->toString();
+
         $data = [
-            'login_date' => date('Y-m-d H:i:s'),
+            'action_date' => date('Y-m-d H:i:s'),
             'username' => '',
-            'session_id' => '', // Set session ID if available
+            'session_id' => session_id(), // Set session ID if available
             'user_id' => 1,
             'email' => '',
-            'ip_address' => '', // Set IP address if available
-            'logout_date' => '',
+            'platform' => $browser . ' / ' . $os . ' / ' . $ipAddress,
             'action_type' => 'attempt signin', // Set the appropriate action type
             'affected_module' => 'Sign in attempt', // Set the affected module if applicable
         ];
